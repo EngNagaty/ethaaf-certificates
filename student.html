@@ -99,6 +99,12 @@ svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stro
 .zoom .cert{width:100%;cursor:zoom-out}
 .zoom .x{position:absolute;top:52px;right:16px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;display:grid;place-items:center}
 .note{font-size:12px;color:var(--ink2);text-align:center;line-height:1.7}
+.certrow{display:flex;align-items:center;gap:12px;padding:14px;width:100%;border:1px solid #E4E2D8}
+.pform{border:1px solid #D9D7CE;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;background:#fff}
+.pt{font-size:18px}
+.fld{display:flex;flex-direction:column;gap:6px}.fld span{font-size:14px}
+.fld input{height:44px;border:1px solid #D9D7CE;border-radius:10px;padding:0 12px;font:inherit;font-size:14px;color:#8A8B80;background:#fff}
+.logout{height:52px;border-radius:12px;background:#B4271C;color:#fff;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px}
 </style></head><body>
 
 <div dir="rtl" lang="ar">
@@ -154,11 +160,12 @@ function home(){
 }
 function account(){
  const L=S.empty?[]:CERTS,nw=L.length&&!S.seen;
- const row=(ic,l,sub,act,extra)=>`<button class="item" ${act?`data-act="go" data-v="${act}"`:''} style="${act?'':'cursor:default'}"><span class="lsi" style="width:36px;height:36px;background:${act?'var(--goldL)':'#F1F0EA'};color:${act?'var(--gold)':'var(--ink2)'}">${ic}</span><span style="flex:1"><b style="font-size:14.5px">${l}</b>${sub?`<small>${sub}</small>`:''}</span>${extra||''}${I.chev}</button>`;
- return `<div class="screen">${sb}<div class="ih">${pat}<h2 style="margin-top:2px">حسابي</h2><p>${STU} · حلقة ابن عامر</p></div>
- <div class="scr">
-  <div class="card">${row(I.user,'بياناتي','','')}${row(I.award,'شهاداتي',L.length?L.length+' شهادات':'لا توجد شهادات بعد','list',nw?'<span class="pill">جديد</span>':'')}${row(I.bell,'الإشعارات','','')}</div>
-  <p class="note">البنود الرمادية تمثيل لبنود «حسابي» الحالية في التطبيق؛ الإضافة الوحيدة هي «شهاداتي».</p>
+ const f=(l,v)=>`<label class="fld"><span>${l}</span><input value="${v}" readonly ${/[0-9+]/.test(v)?'dir="ltr" style="text-align:right"':''}></label>`;
+ return `<div class="screen">${sb}<div class="hdr">${pat}<div class="row between"><b style="font-size:20px">حسابي</b><div class="row"><span class="coin"><svg class="i" viewBox="0 0 24 24" style="color:#F2C94C"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg>430</span><span class="ic">${I.chat}</span><span class="ic">${I.bell}<i class="bd">4</i></span></div></div></div>
+ <div class="scr" style="background:#FAFAF8">
+  <button class="card certrow" data-act="go" data-v="list"><span class="lsi" style="width:40px;height:40px;background:var(--goldL);color:var(--gold);border:1.5px solid #E4D3A0">${I.award}</span><span style="flex:1;text-align:start"><b style="font-size:15px;display:block">شهاداتي</b><small style="font-size:12.5px;color:var(--ink2)">${L.length?L.length+' شهادات · آخرها '+L[0].h:'لا توجد شهادات بعد'}</small></span>${nw?'<span class="pill">جديد</span>':''}${I.chev}</button>
+  <div class="pform"><b class="pt">المعلومات الشخصية</b>${f('الاسم الكامل',STU)}${f('رقم الهوية','1•••••••42')}${f('رقم الجوال','+966 5•• ••• 318')}${f('رقم جوال ولي الأمر','+966 5•• ••• 412')}${f('اسم المجمع','مجمع النور')}${f('اسم الحلقة','ابن عامر')}${f('المرحلة','ثانوي')}</div>
+  <button class="logout">تسجيل خروج <svg class="i" viewBox="0 0 24 24"><path d="M14 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-3M10 12h10M17 9l3 3-3 3"/></svg></button>
  </div>${tab('account')}${toast()}</div>`;
 }
 function list(){
@@ -192,7 +199,7 @@ const SC=[
  ['إشعار — صدرت شهادة',()=>{S={scr:'home',seen:false,empty:false,notif:true}},'يصل إشعار «مبارك! صدرت لك شهادة اجتياز». الضغط عليه يفتح الشهادة مباشرة.'],
  ['الرئيسية — شهادة جديدة',()=>{S={scr:'home',seen:false,empty:false}},'بطاقة مؤقتة تظهر فقط عند صدور شهادة لم يفتحها الطالب، وتختفي بعد فتحها أو إخفائها بـ ×.'],
  ['الرئيسية — الوضع المعتاد',()=>{S={scr:'home',seen:true,empty:false}},'لا يوجد مدخل دائم للشهادات في الرئيسية؛ الشهادة حدث يتكرر مرة أو مرتين في الفصل.'],
- ['حسابي — مدخل شهاداتي',()=>{S={scr:'account',seen:false,empty:false}},'المدخل الدائم في «حسابي»، مع شارة «جديد» عند وجود شهادة لم تُفتح.'],
+ ['حسابي — مدخل شهاداتي',()=>{S={scr:'account',seen:false,empty:false}},'بطاقة «شهاداتي» أعلى «حسابي» فوق المعلومات الشخصية، بعددها وتاريخ آخرها، وعليها «جديد» عند وجود شهادة لم تُفتح. باقي الشاشة كما هي.'],
  ['شهاداتي — القائمة',()=>{S={scr:'list',seen:false,empty:false}},'كل الشهادات الصادرة للطالب، الأحدث أولًا.'],
  ['شهاداتي — لا توجد شهادات',()=>{S={scr:'list',seen:false,empty:true}},'حالة فارغة تشرح كيف يحصل الطالب على شهادة.'],
  ['عرض الشهادة',()=>{S={scr:'view',cert:'c3',from:'list',seen:true}},'نفس عرض صفحة ولي الأمر: تهنئة، الشهادة، تنزيل PDF، حفظ كصورة، مشاركة، والتحقق.'],
