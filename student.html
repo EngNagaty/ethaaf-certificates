@@ -1,0 +1,202 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>شهاداتي — تطبيق الطالب</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Amiri:wght@400;700&display=swap">
+<style>
+:root{--g:#F0F0EB;--ol:#555942;--olD:#3F4230;--olC:#5A5D45;--ink:#23251C;--ink2:#5F6150;--line:#E6E4DA;--gold:#A88A2B;--goldL:#F6EFD8;--lime:#ECF6BC;--ok:#E8F5EC;--okT:#1E6B39;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:#E7E5DD;color:var(--ink);font-family:Cairo,Tahoma,sans-serif}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.top{background:var(--olD);color:#fff;padding-block:14px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.top h1{margin:0;font-size:17px}.top p{margin:0;font-size:12px;color:#CFD2B8}
+.wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:270px 1fr;gap:28px;padding-block:24px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.panel{background:#FBFAF6;border:1px solid var(--line);border-radius:16px;padding:12px;align-self:start;position:sticky;top:16px}
+.panel h2{font-size:12px;color:#77786A;margin:10px 8px 6px}
+.sc{display:block;width:100%;text-align:start;padding:9px 10px;border-radius:10px;font-size:13.5px;color:var(--ink2)}
+.sc:hover{background:#EFEDE4}.sc[aria-current=true]{background:var(--ol);color:#fff}
+.stage{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0}
+.cap{max-width:420px;text-align:center;font-size:13px;color:var(--ink2);line-height:1.7}
+.msel{display:none;width:100%}
+.msel select{width:100%;height:44px;border-radius:10px;border:1px solid var(--line);font:inherit;padding:0 10px;background:#fff}
+@media (max-width:760px){.wrap{grid-template-columns:1fr}.panel{display:none}.msel{display:block}}
+/* phone */
+.phone{box-sizing:content-box;width:390px;max-width:calc(100vw - 44px);height:844px;border:10px solid #1B1C15;border-radius:48px;background:var(--g);position:relative;overflow:hidden;box-shadow:0 30px 60px -30px rgba(40,38,20,.5)}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column}
+.sb{height:44px;flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding:0 26px;font-size:15px;font-weight:700;direction:ltr;color:#fff;position:relative;z-index:2}
+.pat{position:absolute;inset:0;width:100%;height:100%;opacity:.13;pointer-events:none}
+.hdr{background:var(--olC);color:#fff;margin-top:-44px;padding:52px 18px 18px;border-radius:0 0 24px 24px;position:relative;overflow:hidden;flex-shrink:0}
+.hdr .row{position:relative}
+.ic{width:42px;height:42px;border-radius:50%;background:var(--olD);display:grid;place-items:center;color:#fff;position:relative}
+.bd{position:absolute;top:-3px;right:-3px;background:#C0553E;color:#fff;font-size:11px;font-weight:700;border-radius:9px;padding:0 6px;line-height:18px;font-style:normal}
+.coin{height:42px;border-radius:21px;background:var(--olD);display:flex;align-items:center;gap:6px;padding:0 14px;font-weight:700}
+.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}
+.scr{flex:1;overflow-y:auto;padding:14px 14px 24px;display:flex;flex-direction:column;gap:12px;scrollbar-width:none}
+.scr>*{flex-shrink:0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stats div{background:var(--olC);color:#fff;border-radius:12px;height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:15px;position:relative;overflow:hidden}
+.stats b{font-weight:600;font-size:17px}
+.lesson{background:#fff;border-radius:14px;padding:14px;display:flex;gap:12px;align-items:center;margin-inline-end:30px}
+.lsi{width:40px;height:40px;border-radius:9px;background:var(--olD);display:grid;place-items:center;color:#fff}
+.card{background:#fff;border-radius:14px;box-shadow:0 1px 2px rgba(40,38,20,.06)}
+/* certificates entry */
+.entry{display:flex;align-items:center;gap:12px;padding:14px;text-align:start;width:100%}
+.entry .thumb{width:58px;height:42px;border-radius:6px;background:var(--goldL);border:1.5px solid var(--gold);display:grid;place-items:center;color:var(--gold);flex-shrink:0;position:relative}
+.entry b{font-size:15px}.entry small{display:block;font-size:12px;color:var(--ink2)}
+.new{background:linear-gradient(135deg,#FFFDF6,#F8F0D6);border:1.5px solid #E4D3A0}
+.pill{font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px;background:var(--gold);color:#fff;white-space:nowrap}
+.chev{color:#A8A697}
+.tab{flex-shrink:0;background:var(--olC);display:grid;grid-template-columns:repeat(4,1fr);padding:10px 6px 28px;position:relative}
+.tab span{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;color:#D9DBC8}
+.tab span.on{color:#fff}
+.tab svg{width:24px;height:24px}
+/* inner */
+.ih{background:var(--olC);color:#fff;margin-top:-44px;padding:52px 14px 16px;border-radius:0 0 24px 24px;position:relative;overflow:hidden;flex-shrink:0}
+.ih h2{margin:10px 4px 0;font-size:24px;font-weight:800;position:relative}
+.ih p{margin:2px 4px 0;font-size:13px;color:#DCDFC9;position:relative}
+.back{width:38px;height:38px;border-radius:50%;background:var(--olD);display:grid;place-items:center;color:#fff;position:relative}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.sum div{background:#fff;border-radius:12px;padding:10px 12px}.sum span{display:block;font-size:11.5px;color:var(--ink2)}.sum b{font-size:20px}
+.item{display:flex;gap:12px;padding:12px;text-align:start;width:100%;align-items:center}
+.item+.item{border-top:1px solid #EFEDE5}
+.mini{width:84px;height:60px;flex-shrink:0;border-radius:6px;background:#FFFDF6;border:1.5px solid var(--gold);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.mini:before{content:"";position:absolute;inset:3px;border:.8px solid #D9C48A;border-radius:3px}
+.mini i{display:block;height:3px;border-radius:2px;background:#D9C48A}
+.mini .t{width:40px;height:4px;background:var(--gold)}
+.item b{font-size:14.5px;display:block}.item small{display:block;font-size:12px;color:var(--ink2);line-height:1.6}
+.dot{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:var(--gold)}
+.dot:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.sec{font-size:14px;font-weight:800;margin:4px 4px -4px}
+.empty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:34px 18px;color:var(--ink2);font-size:13.5px;line-height:1.8}
+.empty .ill{width:72px;height:56px;border-radius:8px;border:2px dashed #D9C48A;display:grid;place-items:center;color:var(--gold);margin-bottom:6px}
+.empty b{font-size:16px;color:var(--ink)}
+.types{display:flex;flex-direction:column;gap:6px;width:100%;margin-top:6px}
+.types span{background:#fff;border-radius:10px;padding:10px 12px;text-align:start;font-size:13px;color:var(--ink)}
+.types small{display:block;color:var(--ink2);font-size:11.5px}
+/* certificate */
+.cert{background:#FFFDF6;border-radius:10px;padding:12px;position:relative;box-shadow:0 10px 24px -14px rgba(90,70,10,.5);aspect-ratio:1.414/1;border:2px solid var(--gold);cursor:zoom-in}
+.cert .in{position:absolute;inset:7px;border:1px solid #D9C48A;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 16px;gap:3px}
+.cert .org{font-size:8.5px;color:var(--ink2);font-weight:700}
+.cert .ttl{font-family:Amiri,serif;font-size:20px;color:var(--gold);font-weight:700;line-height:1.2}
+.cert .to{font-size:8px;color:var(--ink2)}
+.cert .nm{font-family:Amiri,serif;font-size:17px;font-weight:700;color:var(--ink)}
+.cert .why{font-size:8.5px;color:var(--ink);line-height:1.6;max-width:85%}
+.cert .ft{position:absolute;bottom:9px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-end;font-size:6.5px;color:var(--ink2)}
+.qr{width:26px;height:26px;background:repeating-conic-gradient(#23251C 0 25%,#fff 0 50%) 0 0/6.5px 6.5px;border:2px solid #23251C}
+.cong{text-align:center;display:flex;flex-direction:column;gap:2px}
+.cong b{font-size:19px}.cong span{font-size:13.5px;color:var(--ink2);line-height:1.7}
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.act{background:#fff;border-radius:12px;min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:12.5px;font-weight:700;color:var(--olD)}
+.act.pr{background:var(--ol);color:#fff}
+.meta{padding:4px 14px}
+.meta div{display:flex;justify-content:space-between;padding:10px 0;font-size:13px;border-bottom:1px solid #EFEDE5}
+.meta div:last-child{border:0}.meta span{color:var(--ink2)}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.link{color:var(--ol);font-weight:700;font-size:13px;text-decoration:underline;text-underline-offset:4px}
+.toast{position:absolute;top:52px;left:50%;transform:translateX(-50%);background:#23251C;color:#fff;border-radius:999px;padding:9px 16px;font-size:13px;font-weight:600;z-index:9;white-space:nowrap;animation:t .2s ease}
+@keyframes t{from{opacity:0;transform:translate(-50%,-6px)}}
+.zoom{position:absolute;inset:0;background:rgba(20,20,14,.9);z-index:8;display:flex;align-items:center;justify-content:center;padding:14px}
+.zoom .cert{width:100%;cursor:zoom-out}
+.zoom .x{position:absolute;top:52px;right:16px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;display:grid;place-items:center}
+.note{font-size:12px;color:var(--ink2);text-align:center;line-height:1.7}
+</style></head><body>
+
+<div dir="rtl" lang="ar">
+<header class="top"><div><h1>شهاداتي · تطبيق الطالب</h1><p>جزء من وحدة الشهادات في إتحاف — بيانات افتراضية</p></div></header>
+<div class="wrap">
+ <aside class="panel" id="list"></aside>
+ <main class="stage">
+  <div class="msel"><select id="msel" aria-label="الشاشة"></select></div>
+  <div class="phone" id="ph"></div>
+  <div class="cap" id="cap"></div>
+ </main>
+</div>
+</div>
+
+<script>
+const I={
+ bell:'<svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>',
+ chat:'<svg class="i" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg>',
+ back:'<svg class="i" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>',
+ chev:'<svg class="i chev" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M15 6l-6 6 6 6"/></svg>',
+ award:'<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L7.5 21l4.5-2.5 4.5 2.5L15 13.5"/></svg>',
+ dl:'<svg class="i" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>',
+ img:'<svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg>',
+ share:'<svg class="i" viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>',
+ x:'<svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+ home:'<svg class="i" viewBox="0 0 24 24"><path d="M5 10l7-6 7 6v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/></svg>',
+ rep:'<svg class="i" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9l1.5 1.5L13 8M9 15h6"/></svg>',
+ cart:'<svg class="i" viewBox="0 0 24 24"><path d="M3 4h2l2 12h11l2-8H6"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>',
+ user:'<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>',
+ lesson:'<svg class="i" viewBox="0 0 24 24"><path d="M4 6l8 5 8-5M4 12l8 5 8-5M7 4l10 14M17 4L7 18"/></svg>',
+};
+const pat='<svg class="pat" aria-hidden="true"><defs><pattern id="pp" width="46" height="46" patternUnits="userSpaceOnUse"><path d="M23 4l5 11 11 5-11 5-5 11-5-11-11-5 11-5z M0 23h8M38 23h8M23 0v4M23 42v4" fill="none" stroke="#ECF6BC" stroke-width="1.2"/></pattern></defs><rect width="100%" height="100%" fill="url(#pp)"/></svg>';
+const STU='عبدالرحمن خالد الشمري',ORG='مجمع النور لتحفيظ القرآن الكريم';
+const CERTS=[
+ {id:'c3',type:'اجتياز اختبار مرحلي',ttl:'شهادة اجتياز',why:'لاجتيازه الاختبار المرحلي في الجزء الثلاثين بتقدير «ممتاز»',h:'2 جمادى الأولى 1448 هـ',g:'13 أكتوبر 2026 م',num:'SARA-2026-000123'},
+ {id:'c2',type:'تفوق في اختبار القياس',ttl:'شهادة تفوق',why:'لتفوقه في اختبار القياس بنسبة 96%',h:'14 ربيع الآخر 1448 هـ',g:'26 سبتمبر 2026 م',num:'SARA-2026-000087'},
+ {id:'c1',type:'نهاية الفصل',ttl:'شهادة شكر وتقدير',why:'لانتظامه وتميزه في حلقات التحفيظ خلال الفصل الدراسي الثالث 1447 هـ',h:'20 ذو الحجة 1447 هـ',g:'5 يونيو 2026 م',num:'SARA-2026-000041'},
+];
+let S={scr:'home',seen:false,empty:false,cert:null,zoom:false,toast:null,from:'home'};
+const sb='<div class="sb"><span>6:20</span><span>●●● 43%</span></div>';
+const tab=`<nav class="tab">${[['الرئيسية',I.home,1],['تقرير الطالب',I.rep],['المتجر',I.cart],['حسابي',I.user]].map(([l,ic,on])=>`<span class="${on?'on':''}">${ic}${l}</span>`).join('')}</nav>`;
+const certBox=(c,big)=>`<div class="cert" data-act="${big?'unzoom':'zoom'}" role="img" aria-label="${c.ttl} — ${STU}"><div class="in"><span class="org">${ORG}</span><span class="ttl">${c.ttl}</span><span class="to">يسر إدارة المجمع أن تمنح الطالب</span><span class="nm">${STU}</span><span class="why">${c.why}</span></div><div class="ft"><span>مدير المجمع<br>أ. يزيد الطويل</span><span class="ltr">${c.num}<br>${c.h}</span><span class="qr"></span></div></div>`;
+function home(){
+ const list=S.empty?[]:CERTS,n=list[0];
+ const entry=!list.length?`<button class="card entry" data-act="go" data-v="list"><span class="thumb">${I.award}</span><span style="flex:1"><b>شهاداتي</b><small>لا توجد شهادات بعد</small></span>${I.chev}</button>`
+  :!S.seen?`<button class="card entry new" data-act="open" data-v="${n.id}" data-from="home"><span class="thumb">${I.award}</span><span style="flex:1"><span class="row" style="gap:6px"><b>شهادة جديدة</b><span class="pill">جديد</span></span><small>${n.ttl} · ${n.type}</small><small>${n.h}</small></span>${I.chev}</button>
+   <button class="link" data-act="go" data-v="list" style="align-self:flex-start;margin:-4px 6px 0">كل شهاداتي (${list.length})</button>`
+  :`<button class="card entry" data-act="go" data-v="list"><span class="thumb">${I.award}</span><span style="flex:1"><b>شهاداتي</b><small>${list.length} شهادات · آخرها ${n.h}</small></span>${I.chev}</button>`;
+ return `<div class="screen">${sb}<div class="hdr">${pat}<div class="row between"><b style="font-size:20px">الرئيسية</b><div class="row"><span class="coin"><svg class="i" viewBox="0 0 24 24" style="color:#F2C94C"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg>430</span><span class="ic">${I.chat}</span><span class="ic">${I.bell}<i class="bd">4</i></span></div></div></div>
+ <div class="scr">
+  <div class="stats">${[['غائب',6],['غائب بعذر',1],['متأخر',4],['لم يسمع',83],['المنجزات','11 من 94'],['نسبة الإنجاز','11.7 %']].map(([l,v])=>`<div>${pat}<span style="position:relative">${l}</span><b style="position:relative">${v}</b></div>`).join('')}</div>
+  <div class="lesson card"><span class="lsi">${I.lesson}</span><div style="flex:1"><b style="font-size:15px">درس اليوم</b><div style="font-size:12.5px;color:var(--ink2)">سورة القدر · من الآية (1) حتى الآية (5)</div></div></div>
+  ${entry}
+  <div class="card" style="padding:14px;color:var(--ink2);font-size:13px">الدورة الذهبية · جمادى الأولى 1448 <div style="height:120px;margin-top:10px;background:repeating-linear-gradient(90deg,#F5F4EF 0 44px,#fff 44px 52px);border-radius:8px"></div></div>
+ </div>${tab}${toast()}</div>`;
+}
+function list(){
+ const L=S.empty?[]:CERTS;
+ const body=!L.length?`<div class="empty"><span class="ill">${I.award}</span><b>لا توجد شهادات بعد</b>عند حصولك على شهادة من المجمع ستظهر هنا، وتصل نسخة منها لولي أمرك على الواتساب.
+  <div class="types"><span>اجتياز اختبار مرحلي<small>عند اجتيازك اختبار أي مرحلة</small></span><span>تفوق في اختبار القياس<small>عند حصولك على 90% فأكثر</small></span><span>نهاية الفصل<small>للطلاب المنتظمين في نهاية كل فصل</small></span></div></div>`
+ :`<div class="sum"><div><span>كل الشهادات</span><b>${L.length}</b></div><div><span>هذا الفصل</span><b>2</b></div><div><span>آخر شهادة</span><b style="font-size:13px">${L[0].h.replace(' هـ','')}</b></div></div>
+  <div class="sec">شهاداتي</div>
+  <div class="card">${L.map((c,i)=>`<button class="item" data-act="open" data-v="${c.id}" data-from="list"><span class="mini"><i class="t"></i><i style="width:46px"></i><i style="width:34px"></i></span><span style="flex:1;min-width:0"><b>${c.ttl}</b><small>${c.type}</small><small>${c.h}</small>${i===0&&!S.seen?'<span class="dot">جديدة</span>':''}</span>${I.chev}</button>`).join('')}</div>
+  <p class="note">الشهادات المسحوبة لا تظهر هنا. وإذا أُعيد إصدار شهادة، تظهر النسخة الحالية فقط.</p>`;
+ return `<div class="screen">${sb}<div class="ih">${pat}<div class="row"><button class="back" data-act="go" data-v="home" aria-label="رجوع">${I.back}</button></div><h2>شهاداتي</h2><p>${STU}</p></div><div class="scr">${body}</div>${tab}${toast()}</div>`;
+}
+function view(){
+ const c=CERTS.find(x=>x.id===S.cert);
+ return `<div class="screen">${sb}<div class="ih" style="padding-bottom:12px">${pat}<div class="row between"><button class="back" data-act="back" aria-label="رجوع">${I.back}</button><b style="position:relative;font-size:16px">${c.type}</b><span style="width:38px"></span></div></div>
+ <div class="scr">
+  <div class="cong"><b>مبارك يا ${STU.split(' ')[0]}!</b><span>${c.why}</span></div>
+  ${certBox(c)}
+  <div class="note" style="margin-top:-4px">اضغط الشهادة لتكبيرها</div>
+  <div class="acts"><button class="act pr" data-act="say" data-v="جارٍ تنزيل ${c.num}.pdf">${I.dl}تنزيل PDF</button><button class="act" data-act="say" data-v="حُفظت الصورة في الصور">${I.img}حفظ كصورة</button><button class="act" data-act="say" data-v="فُتحت قائمة المشاركة">${I.share}مشاركة</button></div>
+  <div class="card meta"><div><span>رقم الشهادة</span><b class="ltr">${c.num}</b></div><div><span>تاريخ الإصدار</span><b>${c.h}</b></div><div><span>الجهة</span><b>${ORG.replace(' لتحفيظ القرآن الكريم','')}</b></div><div><span>التحقق</span><button class="link" data-act="say" data-v="فُتحت صفحة التحقق العامة">تحقق من الشهادة</button></div></div>
+ </div>${S.zoom?`<div class="zoom" data-act="unzoom"><button class="x" data-act="unzoom" aria-label="إغلاق">${I.x}</button>${certBox(c,1)}</div>`:''}${toast()}</div>`;
+}
+const toast=()=>S.toast?`<div class="toast" role="status">${S.toast}</div>`:'';
+function render(){const p=document.getElementById('ph');p.innerHTML=S.scr==='home'?home():S.scr==='list'?list():view();sync()}
+let tt;
+const A={go(d){S.scr=d.v;S.zoom=false;render()},open(d){S.cert=d.v;S.from=d.from;S.scr='view';if(d.v==='c3')S.seen=true;render()},back(){S.scr=S.from;render()},zoom(){S.zoom=true;render()},unzoom(){S.zoom=false;render()},
+ say(d){S.toast=d.v;render();clearTimeout(tt);tt=setTimeout(()=>{S.toast=null;render()},2200)}};
+document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(!el||!document.getElementById('ph').contains(el))return;A[el.dataset.act]&&A[el.dataset.act]({...el.dataset})});
+const SC=[
+ ['الرئيسية — شهادة جديدة',()=>{S={scr:'home',seen:false,empty:false}},'عند صدور شهادة جديدة تظهر بطاقة ذهبية «شهادة جديدة» تحت درس اليوم، وتفتح الشهادة مباشرة.'],
+ ['الرئيسية — بعد مشاهدتها',()=>{S={scr:'home',seen:true,empty:false}},'بعد فتح الشهادة تتحول البطاقة إلى مدخل هادئ «شهاداتي» بعددها وتاريخ آخرها.'],
+ ['شهاداتي — القائمة',()=>{S={scr:'list',seen:false,empty:false}},'كل الشهادات الصادرة للطالب، الأحدث أولًا.'],
+ ['شهاداتي — لا توجد شهادات',()=>{S={scr:'list',seen:false,empty:true}},'حالة فارغة تشرح كيف يحصل الطالب على شهادة.'],
+ ['عرض الشهادة',()=>{S={scr:'view',cert:'c3',from:'list',seen:true}},'نفس عرض صفحة ولي الأمر: تهنئة، الشهادة، تنزيل PDF، حفظ كصورة، مشاركة، والتحقق.'],
+ ['تكبير الشهادة',()=>{S={scr:'view',cert:'c3',from:'list',seen:true,zoom:true}},''],
+];
+let cur=0;
+function run(i){cur=i;SC[i][1]();document.getElementById('cap').textContent=SC[i][2];render()}
+function sync(){document.querySelectorAll('.sc').forEach((b,i)=>b.setAttribute('aria-current',i===cur));document.getElementById('msel').value=cur}
+document.getElementById('list').innerHTML='<h2>الشاشات</h2>'+SC.map((s,i)=>`<button class="sc" data-i="${i}">${s[0]}</button>`).join('');
+document.getElementById('msel').innerHTML=SC.map((s,i)=>`<option value="${i}">${s[0]}</option>`).join('');
+document.getElementById('list').onclick=e=>{const b=e.target.closest('.sc');if(b)run(+b.dataset.i)};
+document.getElementById('msel').onchange=e=>run(+e.target.value);
+run(0);
+</script>
+</body></html>
